@@ -5,8 +5,8 @@ local window = library:CreateWindow("Solara Hub")
 
 window:CreateButton("Auto Collect Orbs", function()
     while task.wait() do
-        for _, orb in pairs(game:GetService("Workspace"):GetChildren()) do
-            if orb.Name:lower():find("orb") then
+        for _, orb in pairs(workspace:GetDescendants()) do
+            if orb:IsA("BasePart") and orb.Name:lower():find("orb") then
                 orb.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
             end
         end
